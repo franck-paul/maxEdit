@@ -29,7 +29,6 @@ class maxEditBehaviors
 		'<script type="text/javascript">'."\n".
 		dcPage::jsVar('dotclear.msg.maxEditShow',__('Switch to maximized mode')).
 		dcPage::jsVar('dotclear.msg.maxEditHide',__('Exit from maximized mode')).
-		dcPage::jsVar('dotclear.maxMode','0').
 		"</script>\n".
 		dcPage::jsLoad(urldecode(dcPage::getPF('maxEdit/js/post.js')),$core->getVersion('maxEdit'));
 	}
