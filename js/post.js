@@ -1,3 +1,16 @@
+/*
+# -- BEGIN LICENSE BLOCK ----------------------------------
+# This file is part of maxEdit, a plugin for Dotclear 2.
+#
+# Copyright (c) Franck Paul
+# carnet.franck.paul@gmail.com
+#
+# Licensed under the GPL version 2.0 license.
+# A copy of this license is available in LICENSE file or at
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# -- END LICENSE BLOCK ------------------------------------
+*/
+
 // Jquery functions
 
 // The style function (cope with important for priority)
@@ -213,8 +226,10 @@ $(document).ready(function() {
 	// Cope with toolbar height changing on viewport resize
 	$(window).resize(function() {
 		if (maxEdit.mode) {
+			// In maximized mode
 			var tbh = maxEdit.elt.bottom.outerHeight(true);
 			if (tbh !== maxEdit.toolbarHeight) {
+				// Toolbar height change, update content height accrodingly
 				maxEdit.toolbarHeight = tbh;
 				maxEdit.elt.content
 					.css('height','calc(100vh - ' + tbh + 'px)');

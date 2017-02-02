@@ -19,7 +19,6 @@ if (version_compare($old_version,$new_version,'>=')) return;
 
 try
 {
-
 	$core->setVersion('maxEdit',$new_version);
 
 	return true;

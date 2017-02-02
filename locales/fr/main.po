@@ -1,13 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# -- BEGIN LICENSE BLOCK ----------------------------------
+# This file is part of maxEdit, a plugin for Dotclear 2.
+#
+# Copyright (c) Franck Paul
+# carnet.franck.paul@gmail.com
+#
+# Licensed under the GPL version 2.0 license.
+# A copy of this license is available in LICENSE file or at
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# -- END LICENSE BLOCK ------------------------------------
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 maxEdit module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 14:57+0100\n"
+"POT-Creation-Date: 2017-02-02 19:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
