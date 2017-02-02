@@ -48,6 +48,10 @@ var inMax = function(elt) {
 	// Get current height of editor toolbar
 	maxEdit.toolbarHeight = maxEdit.elt.bottom.outerHeight(true);
 
+	// Get current vertical scroll window position and scroll top
+	maxEdit.scrollPosition = $(window).scrollTop();
+	$(window).scrollTop(0);
+
 	// Wrapper's parents
 	// Save parents attributes
 	maxEdit.elt.parents.each(function(i,e) {
@@ -141,6 +145,9 @@ var outMax = function(elt) {
 	maxEdit.elt.parents.each(function(i,e) {
 		restoreCssAttributes(e);
 	});
+
+	// Restore window vertical scroll position
+	$(window).scrollTop(maxEdit.scrollPosition);
 
 	// Restore toolbar button title
 	$(elt.toolbar).children('button.jstb_maxEdit')
