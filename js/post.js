@@ -55,7 +55,7 @@ var inMax = function(elt) {
 	// Wrapper's parents
 	// Save parents attributes
 	maxEdit.elt.parents.each(function(i,e) {
-		saveCssAttributes(e,['position','overflow','z-index','width','height']);
+		saveStyleAttribute(e);
 	});
 	// Then set attributes of wrapper parents
 	maxEdit.elt.parents
@@ -70,7 +70,7 @@ var inMax = function(elt) {
 
 	// Wrapper
 	maxEdit.elt.wrapper.each(function(i,e) {
-		saveCssAttributes(e,['margin-bottom','width','position','z-index','left','top']);
+		saveStyleAttribute(e);
 	});
 	maxEdit.elt.wrapper
 		.css('margin-bottom',0)
@@ -82,21 +82,21 @@ var inMax = function(elt) {
 
 	// Top (ie label)
 	maxEdit.elt.top.each(function(i,e) {
-		saveCssAttributes(e,['display']);
+		saveStyleAttribute(e);
 	});
 	maxEdit.elt.top
 		.css('display','none');
 
 	// Content (ie Editor)
 	maxEdit.elt.content.each(function(i,e) {
-		saveCssAttributes(e,['height']);
+		saveStyleAttribute(e);
 	});
 	maxEdit.elt.content
 		.css('height','calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
 
 	// Source (ie Textarea)
 	maxEdit.elt.source.each(function(i,e) {
-		saveCssAttributes(e,['height','border','padding','background-color','box-shadow','resize']);
+		saveStyleAttribute(e);
 	});
 	maxEdit.elt.source
 		.css('height','100%')
@@ -108,7 +108,7 @@ var inMax = function(elt) {
 
 	// Bottom (ie Toolbar)
 	maxEdit.elt.bottom.each(function(i,e) {
-		saveCssAttributes(e,['border-radius']);
+		saveStyleAttribute(e);
 	});
 	maxEdit.elt.bottom
 		.css('border-radius','0');
@@ -128,22 +128,22 @@ var outMax = function(elt) {
 
 	// Restore all saved initial attributes
 	maxEdit.elt.bottom.each(function(i,e) {
-		restoreCssAttributes(e);
+		restoreStyleAttribute(e);
 	});
 	maxEdit.elt.source.each(function(i,e) {
-		restoreCssAttributes(e);
+		restoreStyleAttribute(e);
 	});
 	maxEdit.elt.content.each(function(i,e) {
-		restoreCssAttributes(e);
+		restoreStyleAttribute(e);
 	});
 	maxEdit.elt.top.each(function(i,e) {
-		restoreCssAttributes(e);
+		restoreStyleAttribute(e);
 	});
 	maxEdit.elt.wrapper.each(function(i,e) {
-		restoreCssAttributes(e);
+		restoreStyleAttribute(e);
 	});
 	maxEdit.elt.parents.each(function(i,e) {
-		restoreCssAttributes(e);
+		restoreStyleAttribute(e);
 	});
 
 	// Restore window vertical scroll position
@@ -165,23 +165,21 @@ var switchMax = function(elt) {
 	}
 };
 
-var saveCssAttributes = function(elt,attrs) {
-	// Save given css attribute's list of an HTML element
-	var attributes = {};
-	for (var i in attrs) {
-		attributes[attrs[i]] = $(elt).css(attrs[i]);
+var saveStyleAttribute = function(elt) {
+	// Save style attribute of given HTML element
+	var style = $(elt).attr('style');
+	if (style !== undefined) {
+		$(elt).data('maxedit',style);
 	}
-	$(elt).data('maxedit',JSON.stringify(attributes));
 }
 
-var restoreCssAttributes = function(elt) {
-	// Restore saved css attribute's of an HTML element
-	var attributes = $(elt).data('maxedit');
-	if (attributes && attributes !== '') {
-		var attrs = JSON.parse(attributes);
-		for (var attr in attrs) {
-			$(elt).css(attr,attrs[attr]);
-		}
+var restoreStyleAttribute = function(elt) {
+	// Restore a previously saved style attribute of a given HTML element
+	var style = $(elt).data('maxedit');
+	if (style !== undefined) {
+		$(elt).attr('style',style);
+	} else {
+		$(elt).removeAttr('style');
 	}
 }
 
@@ -211,4 +209,16 @@ $(document).ready(function() {
 	maxEdit.mode = false;
 	jsToolBar.prototype.elements.maxEdit.title = dotclear.msg.maxEditShow;
 	jsToolBar.prototype.elements.maxEdit.icon = 'index.php?pf=maxEdit/img/max-on.png';
+
+	// Cope with toolbar height changing on viewport resize
+	$(window).resize(function() {
+		if (maxEdit.mode) {
+			var tbh = maxEdit.elt.bottom.outerHeight(true);
+			if (tbh !== maxEdit.toolbarHeight) {
+				maxEdit.toolbarHeight = tbh;
+				maxEdit.elt.content
+					.css('height','calc(100vh - ' + tbh + 'px)');
+			}
+		}
+	});
 });
