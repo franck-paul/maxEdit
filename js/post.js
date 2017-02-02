@@ -50,18 +50,15 @@ var inMax = function(elt) {
 
 	// Retrieve DOM elements
 	maxEdit.elt = {
-		wrapper : $(elt.editor).parent(),
-		top : $('> label',$(elt.editor).parent()),
-		content : $(elt.editor),
-		bottom : $(elt.toolbar),
-		parents : $(elt.editor).parent().parents(),
-		source : $(elt.textarea),
-		iframe : $(elt.iframe),
-		switcher : $(elt.switcher)
+		wrapper: $(elt.editor).parent(),
+		top: $('> label', $(elt.editor).parent()),
+		content: $(elt.editor),
+		bottom: $(elt.toolbar),
+		parents: $(elt.editor).parent().parents(),
+		source: $(elt.textarea),
+		iframe: $(elt.iframe),
+		switcher: $(elt.switcher)
 	};
-
-	// Get current height of editor toolbar and switcher (if exists)
-	maxEdit.toolbarHeight = maxEdit.elt.bottom.outerHeight(true);
 
 	// Get current vertical scroll window position and scroll top
 	maxEdit.scrollPosition = $(window).scrollTop();
@@ -69,85 +66,88 @@ var inMax = function(elt) {
 
 	// Wrapper's parents
 	// Save parents attributes
-	maxEdit.elt.parents.each(function(i,e) {
+	maxEdit.elt.parents.each(function(i, e) {
 		saveStyleAttribute(e);
 	});
 	// Then set attributes of wrapper parents
 	maxEdit.elt.parents
-		.css('position','static')
-		.css('overflow','visible')
-		.css('z-index',9999);
+		.css('position', 'static')
+		.css('overflow', 'visible')
+		.css('z-index', 9999);
 	// With special cases for body and html parents
-	$('body','html')
-		.css('overflow','hidden')
-		.css('width','0')
-		.css('height','0');
+	$('body', 'html')
+		.css('overflow', 'hidden')
+		.css('width', '0')
+		.css('height', '0');
 
 	// Wrapper
-	maxEdit.elt.wrapper.each(function(i,e) {
+	maxEdit.elt.wrapper.each(function(i, e) {
 		saveStyleAttribute(e);
 	});
 	maxEdit.elt.wrapper
-		.css('margin-bottom',0)
-		.css('position','absolute')
-		.css('z-index',9999)
-		.css('left',0)
-		.css('top',0)
-		.style('width','100vw','important');
+		.css('margin-bottom', 0)
+		.css('position', 'absolute')
+		.css('z-index', 9999)
+		.css('left', 0)
+		.css('top', 0)
+		.style('width', '100vw', 'important');
 
 	// Top (ie label)
-	maxEdit.elt.top.each(function(i,e) {
+	maxEdit.elt.top.each(function(i, e) {
 		saveStyleAttribute(e);
 	});
 	maxEdit.elt.top
-		.css('display','none');
+		.css('display', 'none');
 
-	// Content (ie Editor)
-	maxEdit.elt.content.each(function(i,e) {
-		saveStyleAttribute(e);
-	});
-	maxEdit.elt.content
-		.css('height','calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
-
-	// iframe (if exists)
-	if (maxEdit.elt.iframe !== undefined) {
-		maxEdit.elt.iframe.each(function(i,e) {
-			saveStyleAttribute(e);
-		});
-		maxEdit.elt.iframe
-			.css('height','calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
-	}
 	// switcher (if exists)
 	if (maxEdit.elt.switcher !== undefined) {
-		maxEdit.elt.switcher.each(function(i,e) {
+		maxEdit.elt.switcher.each(function(i, e) {
 			saveStyleAttribute(e);
 		});
 		maxEdit.elt.switcher
-			.css('display','none');
+			.css('display', 'none');
 	}
 
+	// Get current height of editor toolbar
+	maxEdit.toolbarHeight = maxEdit.elt.bottom.outerHeight(true);
+
+	// Content (ie Editor)
+	maxEdit.elt.content.each(function(i, e) {
+		saveStyleAttribute(e);
+	});
+	maxEdit.elt.content
+		.css('height', 'calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
+
+	// iframe (if exists)
+	if (maxEdit.elt.iframe !== undefined) {
+		maxEdit.elt.iframe.each(function(i, e) {
+			saveStyleAttribute(e);
+		});
+		maxEdit.elt.iframe
+			.css('height', 'calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
+	}
 	// Source (ie Textarea)
-	maxEdit.elt.source.each(function(i,e) {
+	maxEdit.elt.source.each(function(i, e) {
 		saveStyleAttribute(e);
 	});
 	maxEdit.elt.source
-		.css('height','100%')
-		.css('border','none')
-		.css('padding','1.25em')
-		.css('box-shadow','none')
-		.css('resize','none');
+		.css('height', '100%')
+		.css('border', 'none')
+		.css('padding', '1.25em')
+		.css('box-shadow', 'none')
+		.css('resize', 'none');
 
 	// Bottom (ie Toolbar)
-	maxEdit.elt.bottom.each(function(i,e) {
+	maxEdit.elt.bottom.each(function(i, e) {
 		saveStyleAttribute(e);
 	});
 	maxEdit.elt.bottom
-		.css('border-radius','0');
+		.css('border-radius', '0');
 
 	// Change toolbar button title and icon
 	$(elt.toolbar).children('button.jstb_maxEdit')
-		.attr('title',dotclear.msg.maxEditHide)
-		.css('background-image','url(index.php?pf=maxEdit/img/max-off.png)');
+		.attr('title', dotclear.msg.maxEditHide)
+		.css('background-image', 'url(index.php?pf=maxEdit/img/max-off.png)');
 
 	maxEdit.mode = true;
 };
@@ -158,32 +158,32 @@ var outMax = function(elt) {
 	if (!maxEdit.mode) return;
 
 	// Restore all saved initial attributes
-	maxEdit.elt.bottom.each(function(i,e) {
+	maxEdit.elt.bottom.each(function(i, e) {
 		restoreStyleAttribute(e);
 	});
-	maxEdit.elt.source.each(function(i,e) {
+	maxEdit.elt.source.each(function(i, e) {
 		restoreStyleAttribute(e);
 	});
-	maxEdit.elt.content.each(function(i,e) {
+	maxEdit.elt.content.each(function(i, e) {
 		restoreStyleAttribute(e);
 	});
 	if (maxEdit.elt.iframe !== undefined) {
-		maxEdit.elt.iframe.each(function(i,e) {
+		maxEdit.elt.iframe.each(function(i, e) {
 			restoreStyleAttribute(e);
 		});
 	}
 	if (maxEdit.elt.switcher !== undefined) {
-		maxEdit.elt.switcher.each(function(i,e) {
+		maxEdit.elt.switcher.each(function(i, e) {
 			restoreStyleAttribute(e);
 		});
 	}
-	maxEdit.elt.top.each(function(i,e) {
+	maxEdit.elt.top.each(function(i, e) {
 		restoreStyleAttribute(e);
 	});
-	maxEdit.elt.wrapper.each(function(i,e) {
+	maxEdit.elt.wrapper.each(function(i, e) {
 		restoreStyleAttribute(e);
 	});
-	maxEdit.elt.parents.each(function(i,e) {
+	maxEdit.elt.parents.each(function(i, e) {
 		restoreStyleAttribute(e);
 	});
 
@@ -192,8 +192,8 @@ var outMax = function(elt) {
 
 	// Restore toolbar button title
 	$(elt.toolbar).children('button.jstb_maxEdit')
-		.attr('title',dotclear.msg.maxEditShow)
-		.css('background-image','url(index.php?pf=maxEdit/img/max-on.png)');
+		.attr('title', dotclear.msg.maxEditShow)
+		.css('background-image', 'url(index.php?pf=maxEdit/img/max-on.png)');
 
 	maxEdit.mode = false;
 };
@@ -210,7 +210,7 @@ var saveStyleAttribute = function(elt) {
 	// Save style attribute of given HTML element
 	var style = $(elt).attr('style');
 	if (style !== undefined) {
-		$(elt).data('maxedit',style);
+		$(elt).data('maxedit', style);
 	}
 }
 
@@ -218,17 +218,18 @@ var restoreStyleAttribute = function(elt) {
 	// Restore a previously saved style attribute of a given HTML element
 	var style = $(elt).data('maxedit');
 	if (style !== undefined) {
-		$(elt).attr('style',style);
+		$(elt).attr('style', style);
 	} else {
 		$(elt).removeAttr('style');
 	}
 }
 
 // Local storage
-var maxEdit = { mode : false };
+var maxEdit = { mode: false };
 
 // Toolbar button
-jsToolBar.prototype.elements.maxEditSpace = {type: 'space',
+jsToolBar.prototype.elements.maxEditSpace = {
+	type: 'space',
 	format: {
 		wysiwyg: true,
 		wiki: true,
@@ -237,7 +238,7 @@ jsToolBar.prototype.elements.maxEditSpace = {type: 'space',
 	}
 };
 
-jsToolBar.prototype.elements.maxEdit = {type: 'button', title: 'Max', fn:{} };
+jsToolBar.prototype.elements.maxEdit = { type: 'button', title: 'Max', fn: {} };
 jsToolBar.prototype.elements.maxEdit.title = dotclear.msg.maxEditShow;
 jsToolBar.prototype.elements.maxEdit.icon = 'index.php?pf=maxEdit/img/max-on.png';
 
@@ -263,11 +264,11 @@ $(document).ready(function() {
 				// Toolbar height change, update content height accrodingly
 				maxEdit.toolbarHeight = tbh;
 				maxEdit.elt.content
-					.css('height','calc(100vh - ' + tbh + 'px)');
+					.css('height', 'calc(100vh - ' + tbh + 'px)');
 				if (maxEdit.elt.iframe !== undefined) {
 					// Toolbar height change, update iframe height accordingly too
 					maxEdit.elt.iframe
-						.css('height','calc(100vh - ' + tbh + 'px)');
+						.css('height', 'calc(100vh - ' + tbh + 'px)');
 				}
 			}
 		}
