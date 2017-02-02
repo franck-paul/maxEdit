@@ -55,10 +55,12 @@ var inMax = function(elt) {
 		content : $(elt.editor),
 		bottom : $(elt.toolbar),
 		parents : $(elt.editor).parent().parents(),
-		source : $(elt.textarea)
+		source : $(elt.textarea),
+		iframe : $(elt.iframe),
+		switcher : $(elt.switcher)
 	};
 
-	// Get current height of editor toolbar
+	// Get current height of editor toolbar and switcher (if exists)
 	maxEdit.toolbarHeight = maxEdit.elt.bottom.outerHeight(true);
 
 	// Get current vertical scroll window position and scroll top
@@ -107,6 +109,23 @@ var inMax = function(elt) {
 	maxEdit.elt.content
 		.css('height','calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
 
+	// iframe (if exists)
+	if (maxEdit.elt.iframe !== undefined) {
+		maxEdit.elt.iframe.each(function(i,e) {
+			saveStyleAttribute(e);
+		});
+		maxEdit.elt.iframe
+			.css('height','calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
+	}
+	// switcher (if exists)
+	if (maxEdit.elt.switcher !== undefined) {
+		maxEdit.elt.switcher.each(function(i,e) {
+			saveStyleAttribute(e);
+		});
+		maxEdit.elt.switcher
+			.css('display','none');
+	}
+
 	// Source (ie Textarea)
 	maxEdit.elt.source.each(function(i,e) {
 		saveStyleAttribute(e);
@@ -148,6 +167,16 @@ var outMax = function(elt) {
 	maxEdit.elt.content.each(function(i,e) {
 		restoreStyleAttribute(e);
 	});
+	if (maxEdit.elt.iframe !== undefined) {
+		maxEdit.elt.iframe.each(function(i,e) {
+			restoreStyleAttribute(e);
+		});
+	}
+	if (maxEdit.elt.switcher !== undefined) {
+		maxEdit.elt.switcher.each(function(i,e) {
+			restoreStyleAttribute(e);
+		});
+	}
 	maxEdit.elt.top.each(function(i,e) {
 		restoreStyleAttribute(e);
 	});
@@ -209,7 +238,8 @@ jsToolBar.prototype.elements.maxEditSpace = {type: 'space',
 };
 
 jsToolBar.prototype.elements.maxEdit = {type: 'button', title: 'Max', fn:{} };
-jsToolBar.prototype.elements.maxEdit.context = 'post';
+jsToolBar.prototype.elements.maxEdit.title = dotclear.msg.maxEditShow;
+jsToolBar.prototype.elements.maxEdit.icon = 'index.php?pf=maxEdit/img/max-on.png';
 
 jsToolBar.prototype.elements.maxEdit.fn.wiki = function() { switchMax(this); };
 jsToolBar.prototype.elements.maxEdit.fn.xhtml = function() { switchMax(this); };
@@ -218,9 +248,11 @@ jsToolBar.prototype.elements.maxEdit.fn.markdown = function() { switchMax(this);
 
 // Ready, set, go \o/
 $(document).ready(function() {
+
 	maxEdit.mode = false;
-	jsToolBar.prototype.elements.maxEdit.title = dotclear.msg.maxEditShow;
-	jsToolBar.prototype.elements.maxEdit.icon = 'index.php?pf=maxEdit/img/max-on.png';
+
+	// Set current toolbar context
+	jsToolBar.prototype.elements.maxEdit.context = dotclear.maxEditContext;
 
 	// Cope with toolbar height changing on viewport resize
 	$(window).resize(function() {
@@ -232,6 +264,11 @@ $(document).ready(function() {
 				maxEdit.toolbarHeight = tbh;
 				maxEdit.elt.content
 					.css('height','calc(100vh - ' + tbh + 'px)');
+				if (maxEdit.elt.iframe !== undefined) {
+					// Toolbar height change, update iframe height accordingly too
+					maxEdit.elt.iframe
+						.css('height','calc(100vh - ' + tbh + 'px)');
+				}
 			}
 		}
 	});
