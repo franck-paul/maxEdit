@@ -115,7 +115,6 @@ var inMax = function(elt) {
 		.css('height','100%')
 		.css('border','none')
 		.css('padding','1.25em')
-		.css('background-color','#fff')
 		.css('box-shadow','none')
 		.css('resize','none');
 
