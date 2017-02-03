@@ -263,12 +263,10 @@ $(document).ready(function() {
 			if (tbh !== maxEdit.toolbarHeight) {
 				// Toolbar height change, update content height accrodingly
 				maxEdit.toolbarHeight = tbh;
-				maxEdit.elt.content
-					.css('height', 'calc(100vh - ' + tbh + 'px)');
+				maxEdit.elt.content.css('height', 'calc(100vh - ' + tbh + 'px)');
 				if (maxEdit.elt.iframe !== undefined) {
 					// Toolbar height change, update iframe height accordingly too
-					maxEdit.elt.iframe
-						.css('height', 'calc(100vh - ' + tbh + 'px)');
+					maxEdit.elt.iframe.css('height', 'calc(100vh - ' + tbh + 'px)');
 				}
 			}
 		}

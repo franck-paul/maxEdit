@@ -22,7 +22,6 @@ class maxEditBehaviors
 	public static function adminPostEditor($editor='',$context='',array $tags=array(),$syntax='')
 	{
 		if ($editor != 'dcLegacyEditor') return;
-		if (!in_array($context,['post','page','quickentry'])) return;
 
 		global $core;
 
@@ -32,6 +31,6 @@ class maxEditBehaviors
 		dcPage::jsVar('dotclear.msg.maxEditHide',__('Exit from maximized mode')).
 		dcPage::jsVar('dotclear.maxEditContext',($context == 'page' ? 'post' : $context)).
 		"</script>\n".
-		dcPage::jsLoad(urldecode(dcPage::getPF('maxEdit/js/post.js')),$core->getVersion('maxEdit'));
+		dcPage::jsLoad(urldecode(dcPage::getPF('maxEdit/js/maxedit.js')),$core->getVersion('maxEdit'));
 	}
 }
