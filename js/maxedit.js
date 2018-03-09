@@ -1,3 +1,6 @@
+/*global $, jQuery, dotclear, jsToolBar */
+'use strict';
+
 /*
 # -- BEGIN LICENSE BLOCK ----------------------------------
 # This file is part of maxEdit, a plugin for Dotclear 2.
@@ -29,7 +32,7 @@ jQuery.fn.style = function(styleName, value, priority) {
 	if (typeof styleName != 'undefined') {
 		if (typeof value != 'undefined') {
 			// Set style property
-			var priority = typeof priority != 'undefined' ? priority : '';
+			priority = typeof priority != 'undefined' ? priority : '';
 			style.setProperty(styleName, value, priority);
 		} else {
 			// Get style property
@@ -39,7 +42,7 @@ jQuery.fn.style = function(styleName, value, priority) {
 		// Get CSSStyleDeclaration
 		return style;
 	}
-}
+};
 
 // utilities functions
 
@@ -212,7 +215,7 @@ var saveStyleAttribute = function(elt) {
 	if (style !== undefined) {
 		$(elt).data('maxedit', style);
 	}
-}
+};
 
 var restoreStyleAttribute = function(elt) {
 	// Restore a previously saved style attribute of a given HTML element
@@ -222,7 +225,7 @@ var restoreStyleAttribute = function(elt) {
 	} else {
 		$(elt).removeAttr('style');
 	}
-}
+};
 
 // Local storage
 var maxEdit = { mode: false };
