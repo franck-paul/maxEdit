@@ -16,11 +16,11 @@ if (!defined('DC_CONTEXT_ADMIN')) {return;}
 // dead but useful code, in order to have translations
 __('maxEdit') . __('Maximize mode for dcLegacyEditor');
 
-$core->addBehavior('adminPostEditor', array('maxEditBehaviors', 'adminPostEditor'));
+$core->addBehavior('adminPostEditor', ['maxEditBehaviors', 'adminPostEditor']);
 
 class maxEditBehaviors
 {
-    public static function adminPostEditor($editor = '', $context = '', array $tags = array(), $syntax = '')
+    public static function adminPostEditor($editor = '', $context = '', array $tags = [], $syntax = '')
     {
         if ($editor != 'dcLegacyEditor') {
             return;

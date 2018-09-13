@@ -17,11 +17,11 @@ $this->registerModule(
     "maxEdit",                          // Name
     "Maximize mode for dcLegacyEditor", // Description
     "Franck Paul",                      // Author
-    '0.1',                              // Version
-    array(
-        'type'        => 'plugin',                     // Type
-        'permissions' => 'usage,contentadmin',         // Permissions
-        'requires'    => array(array('core', '2.11')), // Dependencies
-        'settings'    => array()                      // Settings
-    )
+    '0.2',                              // Version
+    [
+        'type'        => 'plugin',             // Type
+        'permissions' => 'usage,contentadmin', // Permissions
+        'requires'    => [['core', '2.13']],   // Dependencies
+        'settings'    => []                   // Settings
+    ]
 );
