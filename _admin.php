@@ -29,11 +29,11 @@ class maxEditBehaviors
         global $core;
 
         return
-        '<script type="text/javascript">' . "\n" .
-        dcPage::jsVar('dotclear.msg.maxEditShow', __('Switch to maximized mode')) .
-        dcPage::jsVar('dotclear.msg.maxEditHide', __('Exit from maximized mode')) .
-        dcPage::jsVar('dotclear.maxEditContext', ($context == 'page' ? 'post' : $context)) .
-        "</script>\n" .
+        dcPage::jsJson('maxedit', [
+            'show'    => __('Switch to maximized mode'),
+            'hide'    => __('Exit from maximized mode'),
+            'context' => $context == 'page' ? 'post' : $context
+        ]) .
         dcPage::jsLoad(urldecode(dcPage::getPF('maxEdit/js/maxedit.js')), $core->getVersion('maxEdit'));
     }
 }
