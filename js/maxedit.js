@@ -261,7 +261,7 @@ $(document).ready(function() {
   jsToolBar.prototype.elements.maxEdit.context = maxEdit.vars.context;
 
   // Cope with toolbar height changing on viewport resize
-  $(window).resize(function() {
+  $(window).on('resize', function() {
     if (maxEdit.mode) {
       // In maximized mode
       const tbh = maxEdit.elt.bottom.outerHeight(true);

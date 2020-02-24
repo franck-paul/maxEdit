@@ -17,7 +17,7 @@ $this->registerModule(
     "maxEdit",                          // Name
     "Maximize mode for dcLegacyEditor", // Description
     "Franck Paul",                      // Author
-    '0.3',                              // Version
+    '0.2',                              // Version
     [
         'type'        => 'plugin',             // Type
         'permissions' => 'usage,contentadmin', // Permissions
