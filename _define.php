@@ -22,6 +22,8 @@ $this->registerModule(
         'type'        => 'plugin',             // Type
         'permissions' => 'usage,contentadmin', // Permissions
         'requires'    => [['core', '2.15']],   // Dependencies
-        'settings'    => []                   // Settings
+        'settings'    => [],                   // Settings
+        'support'     => 'https://github.com/franck-paul/maxEdit',
+        'details'     => 'https://open-time.net/?q=maxEdit'
     ]
 );
