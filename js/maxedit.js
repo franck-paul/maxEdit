@@ -123,9 +123,12 @@ const inMax = function(elt) {
   maxEdit.elt.source
     .css('height', '100%')
     .css('border', 'none')
-    .css('padding', '1.25em')
+    .css('padding', '2.5em')
     .css('box-shadow', 'none')
-    .css('resize', 'none');
+    .css('resize', 'none')
+    .css('max-width', '80em')
+    .css('margin', '0 auto')
+    .css('font-size', 'larger');
 
   // Bottom (ie Toolbar)
   maxEdit.elt.bottom.each(function(i, e) {
