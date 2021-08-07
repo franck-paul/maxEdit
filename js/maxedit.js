@@ -1,4 +1,4 @@
-/*global $, jQuery, jsToolBar, getData */
+/*global $, jQuery, jsToolBar, dotclear */
 'use strict';
 
 // Jquery functions
@@ -6,9 +6,9 @@
 // The style function (cope with important for priority)
 // ex: $('#element').style('width','100vw','important')
 // from: http://aramk.com/blog/2012/01/17/adding-css-rules-with-important-using-jquery/
-jQuery.fn.style = function(styleName, value, priority) {
+jQuery.fn.style = function (styleName, value, priority) {
   // DOM node
-  var node = this.get(0);
+  const node = this.get(0);
   // Ensure we have a DOM node
   if (typeof node == 'undefined') {
     return;
@@ -33,7 +33,7 @@ jQuery.fn.style = function(styleName, value, priority) {
 
 // utilities functions
 
-const inMax = function(elt) {
+const inMax = function (elt) {
   // Switch into max mode
 
   if (maxEdit.mode) return;
@@ -47,7 +47,7 @@ const inMax = function(elt) {
     parents: $(elt.editor).parent().parents(),
     source: $(elt.textarea),
     iframe: $(elt.iframe),
-    switcher: $(elt.switcher)
+    switcher: $(elt.switcher),
   };
 
   // Get current vertical scroll window position and scroll top
@@ -56,22 +56,16 @@ const inMax = function(elt) {
 
   // Wrapper's parents
   // Save parents attributes
-  maxEdit.elt.parents.each(function(i, e) {
+  maxEdit.elt.parents.each(function (i, e) {
     saveStyleAttribute(e);
   });
   // Then set attributes of wrapper parents
-  maxEdit.elt.parents
-    .css('position', 'static')
-    .css('overflow', 'visible')
-    .css('z-index', 9999);
+  maxEdit.elt.parents.css('position', 'static').css('overflow', 'visible').css('z-index', 9999);
   // With special cases for body and html parents
-  $('body', 'html')
-    .css('overflow', 'hidden')
-    .css('width', '0')
-    .css('height', '0');
+  $('body', 'html').css('overflow', 'hidden').css('width', '0').css('height', '0');
 
   // Wrapper
-  maxEdit.elt.wrapper.each(function(i, e) {
+  maxEdit.elt.wrapper.each(function (i, e) {
     saveStyleAttribute(e);
   });
   maxEdit.elt.wrapper
@@ -83,41 +77,37 @@ const inMax = function(elt) {
     .style('width', '100vw', 'important');
 
   // Top (ie label)
-  maxEdit.elt.top.each(function(i, e) {
+  maxEdit.elt.top.each(function (i, e) {
     saveStyleAttribute(e);
   });
-  maxEdit.elt.top
-    .css('display', 'none');
+  maxEdit.elt.top.css('display', 'none');
 
   // switcher (if exists)
   if (maxEdit.elt.switcher !== undefined) {
-    maxEdit.elt.switcher.each(function(i, e) {
+    maxEdit.elt.switcher.each(function (i, e) {
       saveStyleAttribute(e);
     });
-    maxEdit.elt.switcher
-      .css('display', 'none');
+    maxEdit.elt.switcher.css('display', 'none');
   }
 
   // Get current height of editor toolbar
   maxEdit.toolbarHeight = maxEdit.elt.bottom.outerHeight(true);
 
   // Content (ie Editor)
-  maxEdit.elt.content.each(function(i, e) {
+  maxEdit.elt.content.each(function (i, e) {
     saveStyleAttribute(e);
   });
-  maxEdit.elt.content
-    .css('height', 'calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
+  maxEdit.elt.content.css('height', 'calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
 
   // iframe (if exists)
   if (maxEdit.elt.iframe !== undefined) {
-    maxEdit.elt.iframe.each(function(i, e) {
+    maxEdit.elt.iframe.each(function (i, e) {
       saveStyleAttribute(e);
     });
-    maxEdit.elt.iframe
-      .css('height', 'calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
+    maxEdit.elt.iframe.css('height', 'calc(100vh - ' + maxEdit.toolbarHeight + 'px)');
   }
   // Source (ie Textarea)
-  maxEdit.elt.source.each(function(i, e) {
+  maxEdit.elt.source.each(function (i, e) {
     saveStyleAttribute(e);
   });
   maxEdit.elt.source
@@ -131,52 +121,52 @@ const inMax = function(elt) {
     .css('font-size', 'larger');
 
   // Bottom (ie Toolbar)
-  maxEdit.elt.bottom.each(function(i, e) {
+  maxEdit.elt.bottom.each(function (i, e) {
     saveStyleAttribute(e);
   });
-  maxEdit.elt.bottom
-    .css('border-radius', '0');
+  maxEdit.elt.bottom.css('border-radius', '0');
 
   // Change toolbar button title and icon
-  $(elt.toolbar).children('button.jstb_maxEdit')
+  $(elt.toolbar)
+    .children('button.jstb_maxEdit')
     .attr('title', maxEdit.vars.hide)
     .css('background-image', 'url(index.php?pf=maxEdit/img/max-off.png)');
 
   maxEdit.mode = true;
 };
 
-const outMax = function(elt) {
+const outMax = function (elt) {
   // Exit from max mode
 
   if (!maxEdit.mode) return;
 
   // Restore all saved initial attributes
-  maxEdit.elt.bottom.each(function(i, e) {
+  maxEdit.elt.bottom.each(function (i, e) {
     restoreStyleAttribute(e);
   });
-  maxEdit.elt.source.each(function(i, e) {
+  maxEdit.elt.source.each(function (i, e) {
     restoreStyleAttribute(e);
   });
-  maxEdit.elt.content.each(function(i, e) {
+  maxEdit.elt.content.each(function (i, e) {
     restoreStyleAttribute(e);
   });
   if (maxEdit.elt.iframe !== undefined) {
-    maxEdit.elt.iframe.each(function(i, e) {
+    maxEdit.elt.iframe.each(function (i, e) {
       restoreStyleAttribute(e);
     });
   }
   if (maxEdit.elt.switcher !== undefined) {
-    maxEdit.elt.switcher.each(function(i, e) {
+    maxEdit.elt.switcher.each(function (i, e) {
       restoreStyleAttribute(e);
     });
   }
-  maxEdit.elt.top.each(function(i, e) {
+  maxEdit.elt.top.each(function (i, e) {
     restoreStyleAttribute(e);
   });
-  maxEdit.elt.wrapper.each(function(i, e) {
+  maxEdit.elt.wrapper.each(function (i, e) {
     restoreStyleAttribute(e);
   });
-  maxEdit.elt.parents.each(function(i, e) {
+  maxEdit.elt.parents.each(function (i, e) {
     restoreStyleAttribute(e);
   });
 
@@ -184,14 +174,15 @@ const outMax = function(elt) {
   $(window).scrollTop(maxEdit.scrollPosition);
 
   // Restore toolbar button title
-  $(elt.toolbar).children('button.jstb_maxEdit')
+  $(elt.toolbar)
+    .children('button.jstb_maxEdit')
     .attr('title', maxEdit.vars.show)
     .css('background-image', 'url(index.php?pf=maxEdit/img/max-on.png)');
 
   maxEdit.mode = false;
 };
 
-const switchMax = function(elt) {
+const switchMax = function (elt) {
   if (!maxEdit.mode) {
     inMax(elt);
   } else {
@@ -199,7 +190,7 @@ const switchMax = function(elt) {
   }
 };
 
-const saveStyleAttribute = function(elt) {
+const saveStyleAttribute = function (elt) {
   // Save style attribute of given HTML element
   const style = $(elt).attr('style');
   if (style !== undefined) {
@@ -207,7 +198,7 @@ const saveStyleAttribute = function(elt) {
   }
 };
 
-const restoreStyleAttribute = function(elt) {
+const restoreStyleAttribute = function (elt) {
   // Restore a previously saved style attribute of a given HTML element
   const style = $(elt).data('maxedit');
   if (style !== undefined) {
@@ -220,7 +211,7 @@ const restoreStyleAttribute = function(elt) {
 // Local storage
 let maxEdit = {
   mode: false,
-  vars: getData('maxedit')
+  vars: dotclear.getData('maxedit'),
 };
 
 // Toolbar button
@@ -230,41 +221,40 @@ jsToolBar.prototype.elements.maxEditSpace = {
     wysiwyg: true,
     wiki: true,
     xhtml: true,
-    markdown: true
-  }
+    markdown: true,
+  },
 };
 
 jsToolBar.prototype.elements.maxEdit = {
   type: 'button',
   title: 'Max',
-  fn: {}
+  fn: {},
 };
 jsToolBar.prototype.elements.maxEdit.title = maxEdit.vars.show;
 jsToolBar.prototype.elements.maxEdit.icon = 'index.php?pf=maxEdit/img/max-on.png';
 
-jsToolBar.prototype.elements.maxEdit.fn.wiki = function() {
+jsToolBar.prototype.elements.maxEdit.fn.wiki = function () {
   switchMax(this);
 };
-jsToolBar.prototype.elements.maxEdit.fn.xhtml = function() {
+jsToolBar.prototype.elements.maxEdit.fn.xhtml = function () {
   switchMax(this);
 };
-jsToolBar.prototype.elements.maxEdit.fn.wysiwyg = function() {
+jsToolBar.prototype.elements.maxEdit.fn.wysiwyg = function () {
   switchMax(this);
 };
-jsToolBar.prototype.elements.maxEdit.fn.markdown = function() {
+jsToolBar.prototype.elements.maxEdit.fn.markdown = function () {
   switchMax(this);
 };
 
 // Ready, set, go \o/
-$(document).ready(function() {
-
+$(document).ready(function () {
   maxEdit.mode = false;
 
   // Set current toolbar context
   jsToolBar.prototype.elements.maxEdit.context = maxEdit.vars.context;
 
   // Cope with toolbar height changing on viewport resize
-  $(window).on('resize', function() {
+  $(window).on('resize', function () {
     if (maxEdit.mode) {
       // In maximized mode
       const tbh = maxEdit.elt.bottom.outerHeight(true);
