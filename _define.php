@@ -24,7 +24,9 @@ $this->registerModule(
         'permissions' => 'usage,contentadmin', // Permissions
         'requires'    => [['core', '2.19']],   // Dependencies
         'settings'    => [],                   // Settings
-        'support'     => 'https://github.com/franck-paul/maxEdit',
-        'details'     => 'https://open-time.net/?q=maxEdit'
+
+        'details'    => 'https://open-time.net/?q=maxEdit',       // Details URL
+        'support'    => 'https://github.com/franck-paul/maxEdit', // Support URL
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/maxEdit/main/dcstore.xml'
     ]
 );
