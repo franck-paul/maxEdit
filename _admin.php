@@ -33,7 +33,7 @@ class maxEditBehaviors
         dcPage::jsJson('maxedit', [
             'show'    => __('Switch to maximized mode'),
             'hide'    => __('Exit from maximized mode'),
-            'context' => $context == 'page' ? 'post' : $context
+            'context' => $context == 'page' ? 'post' : $context,
         ]) .
         dcPage::jsLoad(urldecode(dcPage::getPF('maxEdit/js/maxedit.js')), $core->getVersion('maxEdit'));
     }

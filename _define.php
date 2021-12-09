@@ -18,7 +18,7 @@ $this->registerModule(
     'maxEdit',                          // Name
     'Maximize mode for dcLegacyEditor', // Description
     'Franck Paul',                      // Author
-    '0.4',                              // Version
+    '0.5',                              // Version
     [
         'type'        => 'plugin',             // Type
         'permissions' => 'usage,contentadmin', // Permissions
@@ -27,6 +27,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=maxEdit',       // Details URL
         'support'    => 'https://github.com/franck-paul/maxEdit', // Support URL
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/maxEdit/master/dcstore.xml'
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/maxEdit/master/dcstore.xml',
     ]
 );
