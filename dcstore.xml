@@ -1,8 +1,8 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="maxEdit">
-    <name>Maximize mode for dcLegacyEditor</name>
+    <name>maxEdit</name>
     <version>0.4</version>
-    <author>Maximize mode for dcLegacyEditor</author>
+    <author>Franck Paul</author>
     <desc>Maximize mode for dcLegacyEditor</desc>
     <file>https://github.com/franck-paul/maxEdit/releases/download/0.4/plugin-maxEdit-0.4.zip</file>
     <da:dcmin>2.19</da:dcmin>
