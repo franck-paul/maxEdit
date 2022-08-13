@@ -14,7 +14,7 @@ jQuery.fn.style = function (styleName, value, priority = '') {
     return;
   }
   // CSSStyleDeclaration
-  const style = this.get(0).style;
+  const { style } = this.get(0);
   // Getter/Setter
   if (typeof styleName === 'undefined') {
     // Get CSSStyleDeclaration
@@ -206,7 +206,7 @@ const restoreStyleAttribute = (elt) => {
 };
 
 // Local storage
-let maxEdit = {
+const maxEdit = {
   mode: false,
   vars: dotclear.getData('maxedit'),
 };

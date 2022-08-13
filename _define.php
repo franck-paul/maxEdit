@@ -18,11 +18,11 @@ $this->registerModule(
     'maxEdit',                          // Name
     'Maximize mode for dcLegacyEditor', // Description
     'Franck Paul',                      // Author
-    '0.5',                              // Version
+    '0.6',
     [
         'type'        => 'plugin',             // Type
         'permissions' => 'usage,contentadmin', // Permissions
-        'requires'    => [['core', '2.19']],   // Dependencies
+        'requires'    => [['core', '2.23']],   // Dependencies
         'settings'    => [],                   // Settings
 
         'details'    => 'https://open-time.net/?q=maxEdit',       // Details URL

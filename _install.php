@@ -14,19 +14,19 @@ if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-$new_version = $core->plugins->moduleInfo('maxEdit', 'version');
-$old_version = $core->getVersion('maxEdit');
+$new_version = dcCore::app()->plugins->moduleInfo('maxEdit', 'version');
+$old_version = dcCore::app()->getVersion('maxEdit');
 
 if (version_compare($old_version, $new_version, '>=')) {
     return;
 }
 
 try {
-    $core->setVersion('maxEdit', $new_version);
+    dcCore::app()->setVersion('maxEdit', $new_version);
 
     return true;
 } catch (Exception $e) {
-    $core->error->add($e->getMessage());
+    dcCore::app()->error->add($e->getMessage());
 }
 
 return false;
