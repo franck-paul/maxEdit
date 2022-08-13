@@ -1,11 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="maxEdit">
     <name>maxEdit</name>
-    <version>0.5</version>
+    <version>0.6</version>
     <author>Franck Paul</author>
     <desc>Maximize mode for dcLegacyEditor</desc>
-    <file>https://github.com/franck-paul/maxEdit/releases/download/0.5/plugin-maxEdit-0.5.zip</file>
-    <da:dcmin>2.19</da:dcmin>
+    <file>https://github.com/franck-paul/maxEdit/releases/download/0.6/plugin-maxEdit-0.6.zip</file>
+    <da:dcmin>2.23</da:dcmin>
     <da:details>https://open-time.net/?q=maxEdit</da:details>
     <da:support>https://github.com/franck-paul/maxEdit</da:support>
   </module>
