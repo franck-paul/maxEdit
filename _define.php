@@ -15,18 +15,21 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'maxEdit',                          // Name
-    'Maximize mode for dcLegacyEditor', // Description
-    'Franck Paul',                      // Author
+    'maxEdit',
+    'Maximize mode for dcLegacyEditor',
+    'Franck Paul',
     '0.6',
     [
-        'type'        => 'plugin',             // Type
-        'permissions' => 'usage,contentadmin', // Permissions
-        'requires'    => [['core', '2.23']],   // Dependencies
-        'settings'    => [],                   // Settings
+        'type'        => 'plugin',
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_USAGE,
+            dcAuth::PERMISSION_CONTENT_ADMIN,
+        ]),
+        'requires' => [['core', '2.24']],
+        'settings' => [],
 
-        'details'    => 'https://open-time.net/?q=maxEdit',       // Details URL
-        'support'    => 'https://github.com/franck-paul/maxEdit', // Support URL
+        'details'    => 'https://open-time.net/?q=maxEdit',
+        'support'    => 'https://github.com/franck-paul/maxEdit',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/maxEdit/master/dcstore.xml',
     ]
 );

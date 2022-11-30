@@ -17,11 +17,9 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 // dead but useful code, in order to have translations
 __('maxEdit') . __('Maximize mode for dcLegacyEditor');
 
-dcCore::app()->addBehavior('adminPostEditor', ['maxEditBehaviors', 'adminPostEditor']);
-
 class maxEditBehaviors
 {
-    public static function adminPostEditor($editor = '', $context = '', array $tags = [], $syntax = '')
+    public static function adminPostEditor($editor = '', $context = '')
     {
         if ($editor !== 'dcLegacyEditor') {
             return;
@@ -36,3 +34,5 @@ class maxEditBehaviors
         dcPage::jsModuleLoad('maxEdit/js/maxedit.js', dcCore::app()->getVersion('maxEdit'));
     }
 }
+
+dcCore::app()->addBehavior('adminPostEditor', [maxEditBehaviors::class, 'adminPostEditor']);
