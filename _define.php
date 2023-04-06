@@ -10,22 +10,18 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-if (!defined('DC_RC_PATH')) {
-    return;
-}
-
 $this->registerModule(
     'maxEdit',
     'Maximize mode for dcLegacyEditor',
     'Franck Paul',
-    '1.0',
+    '1.1',
     [
         'type'        => 'plugin',
         'permissions' => dcCore::app()->auth->makePermissions([
             dcAuth::PERMISSION_USAGE,
             dcAuth::PERMISSION_CONTENT_ADMIN,
         ]),
-        'requires' => [['core', '2.24']],
+        'requires' => [['core', '2.26']],
         'settings' => [],
 
         'details'    => 'https://open-time.net/?q=maxEdit',

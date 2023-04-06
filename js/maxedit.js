@@ -225,6 +225,8 @@ jsToolBar.prototype.elements.maxEditSpace = {
 jsToolBar.prototype.elements.maxEdit = {
   type: 'button',
   title: 'Max',
+  shortkey: 'KeyF',
+  shortkey_name: 'F',
   fn: {},
 };
 jsToolBar.prototype.elements.maxEdit.title = maxEdit.vars.show;
