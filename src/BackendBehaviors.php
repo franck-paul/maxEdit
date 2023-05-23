@@ -10,14 +10,14 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-if (!defined('DC_CONTEXT_ADMIN')) {
-    return;
-}
+declare(strict_types=1);
 
-// dead but useful code, in order to have translations
-__('maxEdit') . __('Maximize mode for dcLegacyEditor');
+namespace Dotclear\Plugin\maxEdit;
 
-class maxEditBehaviors
+use dcCore;
+use dcPage;
+
+class BackendBehaviors
 {
     public static function adminPostEditor($editor = '', $context = '')
     {
@@ -31,8 +31,6 @@ class maxEditBehaviors
             'hide'    => __('Exit from maximized mode'),
             'context' => $context == 'page' ? 'post' : $context,
         ]) .
-        dcPage::jsModuleLoad('maxEdit/js/maxedit.js', dcCore::app()->getVersion('maxEdit'));
+        dcPage::jsModuleLoad(My::id() . '/js/maxedit.js', dcCore::app()->getVersion('maxEdit'));
     }
 }
-
-dcCore::app()->addBehavior('adminPostEditor', [maxEditBehaviors::class, 'adminPostEditor']);

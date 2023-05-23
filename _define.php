@@ -14,14 +14,15 @@ $this->registerModule(
     'maxEdit',
     'Maximize mode for dcLegacyEditor',
     'Franck Paul',
-    '1.1',
+    '2.0',
     [
-        'type'        => 'plugin',
+        'requires'    => [['core', '2.26']],
         'permissions' => dcCore::app()->auth->makePermissions([
             dcAuth::PERMISSION_USAGE,
             dcAuth::PERMISSION_CONTENT_ADMIN,
         ]),
-        'requires' => [['core', '2.26']],
+        'type'     => 'plugin',
+        'priority' => 1010, // Must be higher than dcLegacyEditor/dcCKEditor priority (ie 1000)
         'settings' => [],
 
         'details'    => 'https://open-time.net/?q=maxEdit',

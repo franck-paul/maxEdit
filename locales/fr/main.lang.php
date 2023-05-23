@@ -9,7 +9,9 @@
 # DOT NOT MODIFY THIS FILE !
 #
 
-l10n::$locales['Maximize mode for dcLegacyEditor'] = '';
-l10n::$locales['maxEdit'] = '';
-l10n::$locales['Switch to maximized mode'] = 'Basculer en mode plein écran';
-l10n::$locales['Exit from maximized mode'] = 'Sortir du mode plein écran';
+use Dotclear\Helper\L10n;
+
+L10n::$locales['Maximize mode for dcLegacyEditor'] = '';
+L10n::$locales['maxEdit'] = '';
+L10n::$locales['Switch to maximized mode'] = 'Basculer en mode plein écran';
+L10n::$locales['Exit from maximized mode'] = 'Sortir du mode plein écran';
