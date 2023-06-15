@@ -14,7 +14,7 @@ $this->registerModule(
     'maxEdit',
     'Maximize mode for dcLegacyEditor',
     'Franck Paul',
-    '2.0.1',
+    '2.1',
     [
         'requires'    => [['core', '2.26']],
         'permissions' => dcCore::app()->auth->makePermissions([
