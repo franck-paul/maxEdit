@@ -27,9 +27,11 @@ class BackendBehaviors
 
         return
         dcPage::jsJson('maxedit', [
-            'show'    => __('Switch to maximized mode'),
-            'hide'    => __('Exit from maximized mode'),
-            'context' => $context == 'page' ? 'post' : $context,
+            'show'     => __('Switch to maximized mode'),
+            'hide'     => __('Exit from maximized mode'),
+            'context'  => $context == 'page' ? 'post' : $context,
+            'icon_on'  => urldecode(dcPage::getPF(My::id() . '/img/max-on.svg')),
+            'icon_off' => urldecode(dcPage::getPF(My::id() . '/img/max-off.svg')),
         ]) .
         dcPage::jsModuleLoad(My::id() . '/js/maxedit.js', dcCore::app()->getVersion('maxEdit'));
     }
