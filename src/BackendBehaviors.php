@@ -14,8 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\maxEdit;
 
-use dcCore;
-use dcPage;
+use Dotclear\Core\Backend\Page;
 
 class BackendBehaviors
 {
@@ -26,13 +25,13 @@ class BackendBehaviors
         }
 
         return
-        dcPage::jsJson('maxedit', [
+        Page::jsJson('maxedit', [
             'show'     => __('Switch to maximized mode'),
             'hide'     => __('Exit from maximized mode'),
             'context'  => $context == 'page' ? 'post' : $context,
-            'icon_on'  => urldecode(dcPage::getPF(My::id() . '/img/max-on.svg')),
-            'icon_off' => urldecode(dcPage::getPF(My::id() . '/img/max-off.svg')),
+            'icon_on'  => urldecode(Page::getPF(My::id() . '/img/max-on.svg')),
+            'icon_off' => urldecode(Page::getPF(My::id() . '/img/max-off.svg')),
         ]) .
-        dcPage::jsModuleLoad(My::id() . '/js/maxedit.js', dcCore::app()->getVersion('maxEdit'));
+        My::jsLoad('maxedit.js');
     }
 }

@@ -133,7 +133,7 @@ $(() => {
     $(elt.toolbar)
       .children('button.jstb_maxEdit')
       .attr('title', maxEdit.vars.hide)
-      .css('background-image', 'url(' + maxEdit.vars.icon_off + ')');
+      .css('background-image', `url(${maxEdit.vars.icon_off})`);
 
     maxEdit.mode = true;
   };
@@ -180,7 +180,7 @@ $(() => {
     $(elt.toolbar)
       .children('button.jstb_maxEdit')
       .attr('title', maxEdit.vars.show)
-      .css('background-image', 'url(' + maxEdit.vars.icon_on + ')');
+      .css('background-image', `url(${maxEdit.vars.icon_on})`);
 
     maxEdit.mode = false;
   };
