@@ -18,17 +18,17 @@ use Dotclear\Core\Backend\Page;
 
 class BackendBehaviors
 {
-    public static function adminPostEditor($editor = '', $context = '')
+    public static function adminPostEditor(string $editor = '', string $context = ''): string
     {
         if ($editor !== 'dcLegacyEditor') {
-            return;
+            return '';
         }
 
         return
         Page::jsJson('maxedit', [
             'show'     => __('Switch to maximized mode'),
             'hide'     => __('Exit from maximized mode'),
-            'context'  => $context == 'page' ? 'post' : $context,
+            'context'  => $context === 'page' ? 'post' : $context,
             'icon_on'  => urldecode(Page::getPF(My::id() . '/img/max-on.svg')),
             'icon_off' => urldecode(Page::getPF(My::id() . '/img/max-off.svg')),
         ]) .
