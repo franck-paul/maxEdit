@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\maxEdit;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Core\Process;
 
 class Backend extends Process
@@ -33,7 +33,7 @@ class Backend extends Process
             return false;
         }
 
-        dcCore::app()->addBehavior('adminPostEditor', BackendBehaviors::adminPostEditor(...));
+        App::behavior()->addBehavior('adminPostEditor', BackendBehaviors::adminPostEditor(...));
 
         return true;
     }
