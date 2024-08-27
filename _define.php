@@ -24,6 +24,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=maxEdit',
         'support'    => 'https://github.com/franck-paul/maxEdit',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/maxEdit/master/dcstore.xml',
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/maxEdit/main/dcstore.xml',
     ]
 );
