@@ -29,7 +29,7 @@ jQuery.fn.style = function (styleName, value, priority = '') {
 };
 
 // Ready, set, go \o/
-$(() => {
+dotclear.ready(() => {
   // Local storage
   const maxEdit = {
     mode: false,
