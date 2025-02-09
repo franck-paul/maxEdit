@@ -10,7 +10,7 @@ jQuery.fn.style = function (styleName, value, priority = '') {
   // DOM node
   const node = this.get(0);
   // Ensure we have a DOM node
-  if (typeof node == 'undefined') {
+  if (typeof node === 'undefined') {
     return;
   }
   // CSSStyleDeclaration
@@ -59,8 +59,8 @@ dotclear.ready(() => {
 
     // Wrapper's parents
     // Save parents attributes
-    maxEdit.elt.parents.each((i, e) => {
-      saveStyleAttribute(e);
+    maxEdit.elt.parents.each((_index, element) => {
+      saveStyleAttribute(element);
     });
     // Then set attributes of wrapper parents
     maxEdit.elt.parents.css('position', 'static').css('overflow', 'visible').css('z-index', 9999);
@@ -68,8 +68,8 @@ dotclear.ready(() => {
     $('body', 'html').css('overflow', 'hidden').css('width', '0').css('height', '0');
 
     // Wrapper
-    maxEdit.elt.wrapper.each((i, e) => {
-      saveStyleAttribute(e);
+    maxEdit.elt.wrapper.each((_index, element) => {
+      saveStyleAttribute(element);
     });
     maxEdit.elt.wrapper
       .css('margin-bottom', 0)
@@ -80,15 +80,15 @@ dotclear.ready(() => {
       .style('width', '100vw', 'important');
 
     // Top (ie label)
-    maxEdit.elt.top.each((i, e) => {
-      saveStyleAttribute(e);
+    maxEdit.elt.top.each((_index, element) => {
+      saveStyleAttribute(element);
     });
     maxEdit.elt.top.css('display', 'none');
 
     // switcher (if exists)
     if (maxEdit.elt.switcher !== undefined) {
-      maxEdit.elt.switcher.each((i, e) => {
-        saveStyleAttribute(e);
+      maxEdit.elt.switcher.each((_index, element) => {
+        saveStyleAttribute(element);
       });
       maxEdit.elt.switcher.css('display', 'none');
     }
@@ -97,21 +97,21 @@ dotclear.ready(() => {
     maxEdit.toolbarHeight = maxEdit.elt.bottom.outerHeight(true);
 
     // Content (ie Editor)
-    maxEdit.elt.content.each((i, e) => {
-      saveStyleAttribute(e);
+    maxEdit.elt.content.each((_index, element) => {
+      saveStyleAttribute(element);
     });
     maxEdit.elt.content.css('height', `calc(100vh - ${maxEdit.toolbarHeight}px)`);
 
     // iframe (if exists)
     if (maxEdit.elt.iframe !== undefined) {
-      maxEdit.elt.iframe.each((i, e) => {
-        saveStyleAttribute(e);
+      maxEdit.elt.iframe.each((_index, element) => {
+        saveStyleAttribute(element);
       });
       maxEdit.elt.iframe.css('height', `calc(100vh - ${maxEdit.toolbarHeight}px)`);
     }
     // Source (ie Textarea)
-    maxEdit.elt.source.each((i, e) => {
-      saveStyleAttribute(e);
+    maxEdit.elt.source.each((_index, element) => {
+      saveStyleAttribute(element);
     });
     maxEdit.elt.source
       .css('height', '100%')
@@ -124,8 +124,8 @@ dotclear.ready(() => {
       .css('font-size', 'larger');
 
     // Bottom (ie Toolbar)
-    maxEdit.elt.bottom.each((i, e) => {
-      saveStyleAttribute(e);
+    maxEdit.elt.bottom.each((_index, element) => {
+      saveStyleAttribute(element);
     });
     maxEdit.elt.bottom.css('border-radius', '0').css('background', 'currentColor');
 
@@ -144,33 +144,33 @@ dotclear.ready(() => {
     if (!maxEdit.mode) return;
 
     // Restore all saved initial attributes
-    maxEdit.elt.bottom.each((i, e) => {
-      restoreStyleAttribute(e);
+    maxEdit.elt.bottom.each((_index, element) => {
+      restoreStyleAttribute(element);
     });
-    maxEdit.elt.source.each((i, e) => {
-      restoreStyleAttribute(e);
+    maxEdit.elt.source.each((_index, element) => {
+      restoreStyleAttribute(element);
     });
-    maxEdit.elt.content.each((i, e) => {
-      restoreStyleAttribute(e);
+    maxEdit.elt.content.each((_index, element) => {
+      restoreStyleAttribute(element);
     });
     if (maxEdit.elt.iframe !== undefined) {
-      maxEdit.elt.iframe.each((i, e) => {
-        restoreStyleAttribute(e);
+      maxEdit.elt.iframe.each((_index, element) => {
+        restoreStyleAttribute(element);
       });
     }
     if (maxEdit.elt.switcher !== undefined) {
-      maxEdit.elt.switcher.each((i, e) => {
-        restoreStyleAttribute(e);
+      maxEdit.elt.switcher.each((_index, element) => {
+        restoreStyleAttribute(element);
       });
     }
-    maxEdit.elt.top.each((i, e) => {
-      restoreStyleAttribute(e);
+    maxEdit.elt.top.each((_index, element) => {
+      restoreStyleAttribute(element);
     });
-    maxEdit.elt.wrapper.each((i, e) => {
-      restoreStyleAttribute(e);
+    maxEdit.elt.wrapper.each((_index, element) => {
+      restoreStyleAttribute(element);
     });
-    maxEdit.elt.parents.each((i, e) => {
-      restoreStyleAttribute(e);
+    maxEdit.elt.parents.each((_index, element) => {
+      restoreStyleAttribute(element);
     });
 
     // Restore window vertical scroll position
