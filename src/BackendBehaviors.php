@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief maxEdit, a plugin for Dotclear 2
  *
@@ -26,11 +27,11 @@ class BackendBehaviors
 
         return
         Page::jsJson('maxedit', [
-            'show'     => __('Switch to maximized mode'),
-            'hide'     => __('Exit from maximized mode'),
-            'context'  => $context === 'page' ? 'post' : $context,
-            'icon_on'  => urldecode(Page::getPF(My::id() . '/img/max-on.svg')),
-            'icon_off' => urldecode(Page::getPF(My::id() . '/img/max-off.svg')),
+            'show'      => __('Switch to maximized mode'),
+            'hide'      => __('Exit from maximized mode'),
+            'context'   => $context === 'page' ? 'post' : $context,
+            'icon'      => urldecode(Page::getPF(My::id() . '/icon.svg')),
+            'icon_dark' => urldecode(Page::getPF(My::id() . '/icon-dark.svg')),
         ]) .
         My::jsLoad('maxedit.js');
     }

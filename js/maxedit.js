@@ -130,10 +130,11 @@ dotclear.ready(() => {
     maxEdit.elt.bottom.css('border-radius', '0').css('background', 'currentColor');
 
     // Change toolbar button title and icon
-    $(elt.toolbar)
-      .children('button.jstb_maxEdit')
-      .attr('title', maxEdit.vars.hide)
-      .css('background-image', `url(${maxEdit.vars.icon_off})`);
+    if (dotclear.data.darkMode) {
+      $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.hide);
+    } else {
+      $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.hide);
+    }
 
     maxEdit.mode = true;
   };
@@ -177,10 +178,11 @@ dotclear.ready(() => {
     $(window).scrollTop(maxEdit.scrollPosition);
 
     // Restore toolbar button title
-    $(elt.toolbar)
-      .children('button.jstb_maxEdit')
-      .attr('title', maxEdit.vars.show)
-      .css('background-image', `url(${maxEdit.vars.icon_on})`);
+    if (dotclear.data.darkMode) {
+      $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.show);
+    } else {
+      $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.show);
+    }
 
     maxEdit.mode = false;
   };
@@ -230,7 +232,8 @@ dotclear.ready(() => {
     fn: {},
   };
   jsToolBar.prototype.elements.maxEdit.title = maxEdit.vars.show;
-  jsToolBar.prototype.elements.maxEdit.icon = maxEdit.vars.icon_on;
+  jsToolBar.prototype.elements.maxEdit.icon = maxEdit.vars.icon;
+  jsToolBar.prototype.elements.maxEdit.icon_dark = maxEdit.vars.icon_dark;
 
   jsToolBar.prototype.elements.maxEdit.fn.wiki = function () {
     switchMax(this);
