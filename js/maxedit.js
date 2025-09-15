@@ -215,6 +215,7 @@ dotclear.ready(() => {
 
   // Toolbar button
   jsToolBar.prototype.elements.maxEdit = {
+    group: 'editor',
     type: 'button',
     title: 'Max',
     shortkey: 'KeyF',
