@@ -214,16 +214,6 @@ dotclear.ready(() => {
   };
 
   // Toolbar button
-  jsToolBar.prototype.elements.maxEditSpace = {
-    type: 'space',
-    format: {
-      wysiwyg: true,
-      wiki: true,
-      xhtml: true,
-      markdown: true,
-    },
-  };
-
   jsToolBar.prototype.elements.maxEdit = {
     type: 'button',
     title: 'Max',
