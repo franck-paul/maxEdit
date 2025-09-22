@@ -15,9 +15,9 @@ $this->registerModule(
     'maxEdit',
     'Maximize mode for dcLegacyEditor',
     'Franck Paul',
-    '5.2',
+    '5.3',
     [
-        'date'        => '2025-09-15T20:03:17+0200',
+        'date'        => '2025-09-22T10:29:46+0200',
         'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'type'        => 'plugin',
