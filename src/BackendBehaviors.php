@@ -15,7 +15,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\maxEdit;
 
-use Dotclear\Core\Backend\Page;
+use Dotclear\App;
 
 class BackendBehaviors
 {
@@ -26,12 +26,12 @@ class BackendBehaviors
         }
 
         return
-        Page::jsJson('maxedit', [
+        App::backend()->page()->jsJson('maxedit', [
             'show'      => __('Switch to maximized mode'),
             'hide'      => __('Exit from maximized mode'),
             'context'   => $context === 'page' ? 'post' : $context,
-            'icon'      => urldecode(Page::getPF(My::id() . '/icon.svg')),
-            'icon_dark' => urldecode(Page::getPF(My::id() . '/icon-dark.svg')),
+            'icon'      => urldecode((string) App::backend()->page()->getPF(My::id() . '/icon.svg')),
+            'icon_dark' => urldecode((string) App::backend()->page()->getPF(My::id() . '/icon-dark.svg')),
         ]) .
         My::jsLoad('maxedit.js');
     }
