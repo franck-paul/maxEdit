@@ -219,7 +219,6 @@ dotclear.ready(() => {
     type: 'button',
     title: 'Max',
     key: 'f',
-    shortkey: 'KeyF',
     shortkey_name: 'F',
     fn: {},
   };
