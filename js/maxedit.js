@@ -10,17 +10,17 @@ jQuery.fn.style = function (styleName, value, priority = '') {
   // DOM node
   const node = this.get(0);
   // Ensure we have a DOM node
-  if (typeof node === 'undefined') {
+  if (node === undefined) {
     return;
   }
   // CSSStyleDeclaration
   const { style } = this.get(0);
   // Getter/Setter
-  if (typeof styleName === 'undefined') {
+  if (styleName === undefined) {
     // Get CSSStyleDeclaration
     return style;
   }
-  if (typeof value === 'undefined') {
+  if (value === undefined) {
     // Get style property
     return style.getPropertyValue(styleName);
   }
@@ -130,11 +130,7 @@ dotclear.ready(() => {
     maxEdit.elt.bottom.css('border-radius', '0').css('background', 'currentColor');
 
     // Change toolbar button title and icon
-    if (dotclear.data.darkMode) {
-      $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.hide);
-    } else {
-      $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.hide);
-    }
+    $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.hide);
 
     maxEdit.mode = true;
   };
@@ -178,11 +174,7 @@ dotclear.ready(() => {
     $(window).scrollTop(maxEdit.scrollPosition);
 
     // Restore toolbar button title
-    if (dotclear.data.darkMode) {
-      $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.show);
-    } else {
-      $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.show);
-    }
+    $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.show);
 
     maxEdit.mode = false;
   };
