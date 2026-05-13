@@ -1,4 +1,4 @@
-/*global $, jQuery, jsToolBar, dotclear */
+/*global $, jQuery, dotclear */
 'use strict';
 
 // Jquery functions
@@ -54,8 +54,8 @@ dotclear.ready(() => {
     };
 
     // Get current vertical scroll window position and scroll top
-    maxEdit.scrollPosition = $(window).scrollTop();
-    $(window).scrollTop(0);
+    maxEdit.scrollPosition = $(globalThis).scrollTop();
+    $(globalThis).scrollTop(0);
 
     // Wrapper's parents
     // Save parents attributes
@@ -171,7 +171,7 @@ dotclear.ready(() => {
     });
 
     // Restore window vertical scroll position
-    $(window).scrollTop(maxEdit.scrollPosition);
+    $(globalThis).scrollTop(maxEdit.scrollPosition);
 
     // Restore toolbar button title
     $(elt.toolbar).children('button.jstb_maxEdit').attr('title', maxEdit.vars.show);
@@ -206,7 +206,7 @@ dotclear.ready(() => {
   };
 
   // Toolbar button
-  jsToolBar.prototype.elements.maxEdit = {
+  dotclear.ToolBar.prototype.elements.maxEdit = {
     group: 'editor',
     type: 'button',
     title: 'Max',
@@ -214,30 +214,30 @@ dotclear.ready(() => {
     shortkey_name: 'F',
     fn: {},
   };
-  jsToolBar.prototype.elements.maxEdit.title = maxEdit.vars.show;
-  jsToolBar.prototype.elements.maxEdit.icon = maxEdit.vars.icon;
-  jsToolBar.prototype.elements.maxEdit.icon_dark = maxEdit.vars.icon_dark;
+  dotclear.ToolBar.prototype.elements.maxEdit.title = maxEdit.vars.show;
+  dotclear.ToolBar.prototype.elements.maxEdit.icon = maxEdit.vars.icon;
+  dotclear.ToolBar.prototype.elements.maxEdit.icon_dark = maxEdit.vars.icon_dark;
 
-  jsToolBar.prototype.elements.maxEdit.fn.wiki = function () {
+  dotclear.ToolBar.prototype.elements.maxEdit.fn.wiki = function () {
     switchMax(this);
   };
-  jsToolBar.prototype.elements.maxEdit.fn.xhtml = function () {
+  dotclear.ToolBar.prototype.elements.maxEdit.fn.xhtml = function () {
     switchMax(this);
   };
-  jsToolBar.prototype.elements.maxEdit.fn.wysiwyg = function () {
+  dotclear.ToolBar.prototype.elements.maxEdit.fn.wysiwyg = function () {
     switchMax(this);
   };
-  jsToolBar.prototype.elements.maxEdit.fn.markdown = function () {
+  dotclear.ToolBar.prototype.elements.maxEdit.fn.markdown = function () {
     switchMax(this);
   };
 
   maxEdit.mode = false;
 
   // Set current toolbar context
-  jsToolBar.prototype.elements.maxEdit.context = maxEdit.vars.context;
+  dotclear.ToolBar.prototype.elements.maxEdit.context = maxEdit.vars.context;
 
   // Cope with toolbar height changing on viewport resize
-  $(window).on('resize', () => {
+  $(globalThis).on('resize', () => {
     if (maxEdit.mode) {
       // In maximized mode
       const tbh = maxEdit.elt.bottom.outerHeight(true);
