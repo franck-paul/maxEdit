@@ -30,8 +30,8 @@ class BackendBehaviors
             'show'      => __('Switch to maximized mode'),
             'hide'      => __('Exit from maximized mode'),
             'context'   => $context === 'page' ? 'post' : $context,
-            'icon'      => urldecode((string) App::backend()->page()->getPF(My::id() . '/icon.svg')),
-            'icon_dark' => urldecode((string) App::backend()->page()->getPF(My::id() . '/icon-dark.svg')),
+            'icon'      => urldecode(App::backend()->page()->getPF(My::id() . '/icon.svg')),
+            'icon_dark' => urldecode(App::backend()->page()->getPF(My::id() . '/icon-dark.svg')),
         ]) .
         My::jsLoad('maxedit.js');
     }
